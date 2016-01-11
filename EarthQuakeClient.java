@@ -89,10 +89,12 @@ public class EarthQuakeClient
     
     public void quakesOfDepth(){
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "data/nov20quakedatasmall.atom";
+        //String source = "data/nov20quakedatasmall.atom";
+        String source="data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);
         System.out.println("read data for "+list.size()+" quakes");
-        ArrayList<QuakeEntry> quakeDepth = filterByDepth(list, -10000.0, -5000.0);
+        //ArrayList<QuakeEntry> quakeDepth = filterByDepth(list, -10000.0, -5000.0);
+        ArrayList<QuakeEntry> quakeDepth = filterByDepth(list, -10000.0, -8000.0);
         for (int k=0; k<quakeDepth.size(); k++) {
             QuakeEntry entry = quakeDepth.get(k);
             System.out.println(entry);
@@ -118,12 +120,12 @@ public class EarthQuakeClient
     
     public void quakesByPhrase(){
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "data/nov20quakedatasmall.atom";
+        String source = "data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);
         System.out.println("read data for "+list.size()+" quakes");
-        //String where = "end";String phrase = "California";
+        String where = "any";String phrase = "Creek";
         //String where = "any";String phrase = "Can";
-        String where = "start";String phrase = "Explosion";
+        //String where = "start";String phrase = "Explosion";
         ArrayList<QuakeEntry> quakePhrase = filterByPhrase(list, where, phrase);
         
         
